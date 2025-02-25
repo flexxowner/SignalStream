@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window x:Class="SignalStream.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="using:SignalStream"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="using:SignalStream.Controls"
+        mc:Ignorable="d"
+        Title="SignalStream">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="0.4*" />
+            <RowDefinition Height="0.6*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                    Spacing="4"
+                    VerticalAlignment="Stretch">
+            <Button x:Name="StartRenderingBtn"
+                    Foreground="Black"
+                    BorderBrush="Black"
+                    Style="{StaticResource AccentButtonStyle}"
+                    BorderThickness="1"
+                    Command="{x:Bind ViewModel.StartRenderingCommand, Mode=OneWay}"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center">
+                СТАРТ
+            </Button>
+            <Button x:Name="StopRenderingBtn"
+                    Foreground="Black"
+                    BorderBrush="Black"
+                    Style="{StaticResource AccentButtonStyle}"
+                    BorderThickness="1"
+                    Command="{x:Bind ViewModel.StopRenderingCommand, Mode=OneWay}"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center">
+                СТОП
+            </Button>
+        </StackPanel>
+
+        <controls:SpectrogramControl x:Name="SpectrogramControl"
+                                     Grid.Row="1"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Stretch" />
+
+        <controls:WaterfallControl x:Name="WaterfallControl"
+                                   Grid.Row="2"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch" />
+    </Grid>
+</Window>
